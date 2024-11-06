@@ -1,12 +1,10 @@
 const bcrypt = require('bcrypt');
 
-//해싱 과정에서 사용하는 반복 횟수
-const saltRounds = 10; // 해시할 때 사용할 솔트 라운드 수
-
 //비밀번호 해싱
 const hashPassword = async (password) => {
     try {
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
         return hashedPassword; // 해싱된 비밀번호 반환
     } catch (error) {
         console.error('비밀번호 해싱 오류:', error);

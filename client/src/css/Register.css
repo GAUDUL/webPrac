@@ -1,0 +1,47 @@
+.Register {
+    text-align: center; /* 전체 중앙 정렬을 유지 */
+    background-color: rgb(255, 255, 255);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .RegisterText {
+    color: rgb(58, 58, 58);
+    font-size: 50px;
+    margin: 0px 0 100px 0; /* 위쪽 여백을 조정하여 원하는 위치로 이동 */
+    margin-bottom: 100px
+  }
+  
+  .RegisterBlank {
+    width: 300px; /* 너비 조정 */
+    height: 40px; /* 높이 조정 */
+    padding: 10px;
+    font-size: 18px;
+    background-color: #f0f0f0; /* 배경색 */
+    border: 3px solid #5932a1; /* 테두리 */
+    border-radius: 25px; /* 모서리 둥글게 */
+    outline: none; /* 클릭 시 기본 파란색 테두리 제거 */
+    margin-bottom: 15px; /* 필드 사이 여백 추가 */
+  }
+  
+  .RegisterButton{
+    width: 300px; /* 너비 조정 */
+    height: 50px; /* 높이 조정 */
+    padding: 10px;
+    font-size: 20px;
+    color:white;
+    font-weight: bold;
+    background-color: #5932a1; /* 배경색 */
+    border-radius: 25px; /* 모서리 둥글게 */
+    border: none; /* 테두리 제거 */
+    margin-bottom: 200px; /* 필드 사이 여백 추가 */
+  }
+  
+  .RegisterBlankText {
+    text-align:left;
+    color: rgb(58, 58, 58) !important; /* 우선 적용 */
+    margin: 0px 0px 0px 0; /* 위쪽 여백을 조정하여 원하는 위치로 이동 */
+  }

@@ -21,7 +21,6 @@ function Login() {
 
   //로그인 버튼
   const handleLogin = () => {
-    console.log(user.userId);
     userLogin(user.userId, user.passWord)
     .then((response) => {
       if (response.status=== 200) { // 예시로 성공 여부를 체크 (서버 응답에 따라 다름)
@@ -47,7 +46,7 @@ function Login() {
       <input className="LoginBlank"
           type="text"
           value={user.userId}
-          onChange={(e) => setUser({ userId: e.target.value })}
+          onChange={(e) => setUser(prev=>({...prev, userId: e.target.value }))}
           maxLength={12} // 최대 입력 길이를 12로 설정
       />
       </div>
@@ -56,7 +55,7 @@ function Login() {
       <input className="LoginBlank"
           type="password"
           value={user.passWord}
-          onChange={(e) => setUser({ passWord: e.target.value })}
+          onChange={(e) => setUser(prev=>({...prev,passWord: e.target.value }))}
           maxLength={18} // 최대 입력 길이를 18로 설정
       />
       </div>

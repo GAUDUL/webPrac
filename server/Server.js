@@ -8,8 +8,7 @@ const session = require('express-session')
 const router = express.Router();
 require('dotenv').config(); //환경 변수
 const port = process.env.PORT;
-
-const userRouter = require('./routes/Login')
+const {dbConnect}= require('./DB/DbConnect');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -20,20 +19,24 @@ app.use(cors({
     origin: 'http://localhost:3000', // 클라이언트의 URL
     credentials: true // 쿠키와 같은 자격 증명 허용
 }));
-app.use(cookieParser(process.env.SESSION_SECRET))
+app.use(cookieParser())
 app.use(session({
     secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 30 * 60 * 1000, httpOnly:true, secure:false },
-    resave:false,
-    saveUninitialized:false
-}))
-
-router.get('/', (req, res) => {
-    if (req.session.user) {
-        res.json({ isLoggedIn: true });
-    } else {
-        res.json({ isLoggedIn: false });
+    resave: false, 
+    saveUninitialized: true,
+    cookie: {
+        domain: true,
+        secure: false,
+        httpOnly: true, // 클라이언트에서 JavaScript로 접근할 수 없게 설정
+        maxAge: 1000 * 60 * 60 * 24,
     }
+}));
+
+
+const userRouter = require('./routes/Login')
+router.get('/', (req, res) => {
+    console.log(req.session.user);
+    res.json({message:'Hello NodeJs'})
 });
 
 app.use('/', router);
@@ -43,6 +46,6 @@ app.use('/user', userRouter);
 
 app.listen(port, () => {
     console.log("listen") // 정상 작동
-    //dbConnect(); //DB 연결
+    dbConnect(); //DB 연결
 }); 
 
