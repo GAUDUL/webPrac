@@ -1,0 +1,11 @@
+.MainPage{
+    text-align: center; /* 전체 중앙 정렬을 유지 */
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.block{
+    border: 3px solid #b1b1b1; /* 테두리 */
+}

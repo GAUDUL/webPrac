@@ -6,7 +6,9 @@ const {getDatabase} = require('../DB/DbConnect');
 router.get('/', (req, res) => {
     console.log('세션 상태:', req.session); // 세션 상태 로그
     if (req.session.user) {
-        res.json({ isLoggedIn: true });
+        res.json({ 
+            isLoggedIn: true,
+            userName: req.session.user.name});
     } else {
         res.json({ isLoggedIn: false });
     }
@@ -67,11 +69,26 @@ router.post('/login', async (req, res) => {
                 res.status(200).json({ message: '가입 성공' });
             });
         } else {
-            res.status(401).json({message: '비밀번호가 일치하지 않습니다.' });
+            res.status(401).json({message: '비밀번호가 일치하지 않습니다' });
         }
     } else {
-        res.status(404).json({message: '사용자를 찾을 수 없습니다.' });
+        res.status(404).json({message: '사용자를 찾을 수 없습니다' });
     }
 })
+
+router.get('/logout', async (req, res) => {
+    if (req.session.user) {
+        req.session.destroy((err) => {
+            if (err) {
+                console.error('세션 삭제 오류:', err);
+                return res.status(500).json({ message: '로그아웃 실패' });
+            }
+            res.status(200).json({ message: '로그아웃 성공' });
+        });
+    } else {
+        res.status(404).json({ message: '사용자를 찾을 수 없습니다' });
+    }
+});
+
 
 module.exports = router

@@ -7,7 +7,7 @@ export const checkLoginStatus = async () => {
           withCredentials: true, // 쿠키 포함
        }
       ); // GET 요청
-      return response.data.isLoggedIn; // 로그인 상태 반환
+      return response.data; // 로그인 상태 반환
     } catch (error) {
       console.error('로그인 상태 확인 오류:', error);
       return false;

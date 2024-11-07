@@ -10,9 +10,8 @@ function Login() {
    // 로그인 상태 확인
   useEffect(() => {
     const verifyLogin = async () => {
-      const isLoggedIn = await checkLoginStatus();
-      console.log(isLoggedIn)
-      if (isLoggedIn) {
+      const data = await checkLoginStatus();
+      if (data.isLoggedIn) {
         navigate('/main'); // 로그인 상태일 경우 메인 페이지로 이동
       }
     };

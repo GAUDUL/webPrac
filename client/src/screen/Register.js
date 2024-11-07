@@ -9,7 +9,6 @@ function Register() {
 
   //회원가입 버튼
   const handleRegister = () => {
-    console.log(user.userId);
     userRegister(user.userName, user.userId, user.passWord)
     .then((response) => {
       if(response.message==='중복'){

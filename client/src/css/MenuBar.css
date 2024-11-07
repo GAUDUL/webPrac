@@ -1,0 +1,86 @@
+.MenuBar {
+    display: flex; /* 버튼들을 가로로 배치 */
+    align-items: center; /* 버튼을 세로로 중앙 정렬 */
+    padding: 10px; /* 상하좌우 여백 */
+    background-color: #ffffff; /* 배경색 (원하는 색으로 변경 가능) */
+    justify-content: space-between; /* 왼쪽과 오른쪽에 공간을 배분 */
+}
+
+.left-buttons {
+    display: flex; /* 왼쪽 버튼들을 가로로 배치 */
+    align-items: center; /* 버튼을 세로로 중앙 정렬 */
+}
+
+.right-buttons {
+    display: flex; /* 오른쪽 버튼들을 가로로 배치 */
+    align-items: center; /* 버튼을 세로로 중앙 정렬 */
+    margin-left: auto; /* 오른쪽 버튼들을 오른쪽 끝으로 밀어줌 */
+}
+
+.MainButton{
+    margin-right: 15px; /* 버튼 간 간격 설정 */
+    width: 120px; /* 너비 조정 */
+    height: 40px; /* 높이 조정 */
+    font-size: 19px;
+    font-weight:bolder;
+    border:none;
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    cursor: pointer; /* 마우스 커서 변경 */
+}
+
+.button {
+    margin-right: 15px; /* 버튼 간 간격 설정 */
+    width: 120px; /* 너비 조정 */
+    height: 40px; /* 높이 조정 */
+    font-size: 18px;
+    font-weight: lighter;
+    border-radius: 50px;
+    border-color: transparent;
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    cursor: pointer; /* 마우스 커서 변경 */
+}
+
+.button:last-child {
+    margin-right: 0; /* 마지막 버튼에는 간격을 추가하지 않음 */
+}
+
+.button:hover {
+    background-color: #5932a1; /* 호버 시 배경색 변경 */
+    color:#ffffff
+}
+
+.button-right {
+    width: 80px; /* 너비 조정 */
+    height: 40px; /* 높이 조정 */
+    font-size: 18px;
+    font-weight: lighter;
+    border-radius: 50px;
+    border-color: transparent;
+    background-color: transparent; /* 배경을 투명하게 설정 */
+    cursor: pointer; /* 마우스 커서 변경 */
+    margin-left: auto; /* 왼쪽에 남은 공간을 차지하도록 하여 오른쪽으로 이동 */
+}
+.button-right:hover {
+    background-color: #5932a1; /* 호버 시 배경색 변경 */
+    color:#ffffff
+}
+
+.LogoutButton {
+  width: 60px;
+  height: 30px; /* 높이 조정 */
+  padding: 10px 10px;
+  margin-right: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  background-color: transparent;
+  border-color: #ff4d4d;
+  color: #ff4d4d;
+  border-radius: 5px;
+  line-height: 0px; /* 텍스트가 버튼의 세로 중앙에 오도록 설정 */
+  padding-right:40px
+}
+
+.LogoutButton:hover{
+    background-color: #ff4d4d; /* 호버 시 배경색 변경 */
+    color:#ffffff;
+}
