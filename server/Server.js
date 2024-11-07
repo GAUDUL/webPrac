@@ -13,8 +13,8 @@ const {dbConnect}= require('./DB/DbConnect');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors({
     origin: 'http://localhost:3000', // 클라이언트의 URL
     credentials: true // 쿠키와 같은 자격 증명 허용
@@ -23,9 +23,8 @@ app.use(cookieParser())
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false, 
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
-        domain: true,
         secure: false,
         httpOnly: true, // 클라이언트에서 JavaScript로 접근할 수 없게 설정
         maxAge: 1000 * 60 * 60 * 24,
@@ -34,8 +33,8 @@ app.use(session({
 
 
 const userRouter = require('./routes/Login')
+
 router.get('/', (req, res) => {
-    console.log(req.session.user);
     res.json({message:'Hello NodeJs'})
 });
 

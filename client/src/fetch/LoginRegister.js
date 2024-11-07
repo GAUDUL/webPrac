@@ -2,7 +2,11 @@ import axios from 'axios';
 
 export const checkLoginStatus = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_NODEJS_API_URL}/user`); // GET 요청
+      const response = await axios.get(`${process.env.REACT_APP_NODEJS_API_URL}/user`,
+        {
+          withCredentials: true, // 쿠키 포함
+       }
+      ); // GET 요청
       return response.data.isLoggedIn; // 로그인 상태 반환
     } catch (error) {
       console.error('로그인 상태 확인 오류:', error);
@@ -39,3 +43,14 @@ export const userRegister = async (name, id, pass)=>{
     console.log('회원가입 오류: ',error);
   }
 };
+
+export const userLogout = async ()=>{
+  try{
+    const response=await axios.get(`${process.env.REACT_APP_NODEJS_API_URL}/user/logout`,{
+      withCredentials: true,
+    })
+    return response
+  } catch(error){
+    console.log('로그아웃 오류: ',error)
+  }
+}

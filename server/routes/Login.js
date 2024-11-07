@@ -27,9 +27,15 @@ router.post('/register', async (req, res) => {
             'userId': userId,
             'passWord': hashedPassword
         })
-        req.session.user = { userId, userName };
-        console.log('세션 설정:', req.session); // 세션 로그 확인
-        res.status(200).json({ message: '가입 성공' });
+        req.session.user = { 
+            id:userId,
+            name: userName }; 
+        req.session.save((err) => {
+            if (err) {
+                console.error('세션 저장 오류:', err);
+            }
+            res.status(200).json({ message: '가입 성공' });
+        });
     }else { //중복
         res.json({ message: '중복' });
     }
@@ -51,9 +57,9 @@ router.post('/login', async (req, res) => {
         if (isMatch) {
             req.session.user = {
                 id: userId,
+                name: userMatch.userName,
                 authorized: true,
             };
-            console.log('세션 설정:', req.session); // 세션 로그 확인
             req.session.save((err) => {
                 if (err) {
                     console.error('세션 저장 오류:', err);
