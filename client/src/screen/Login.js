@@ -11,9 +11,9 @@ function Login() {
   useEffect(() => {
     const verifyLogin = async () => {
       const data = await checkLoginStatus();
-      if (data.isLoggedIn) {
-        navigate('/main'); // 로그인 상태일 경우 메인 페이지로 이동
-      }
+      // if (data.isLoggedIn) {
+      //   navigate('/main'); // 로그인 상태일 경우 메인 페이지로 이동
+      // }
     };
     verifyLogin();
   }, [navigate]);

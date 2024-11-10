@@ -8,7 +8,7 @@ const session = require('express-session')
 const router = express.Router();
 require('dotenv').config(); //환경 변수
 const port = process.env.PORT;
-const {dbConnect}= require('./DB/DbConnect');
+const {dbConnect}= require('./components/DbConnect');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,7 +32,7 @@ app.use(session({
 }));
 
 
-const userRouter = require('./routes/Login')
+const userRouter = require('./routes/userRoutes')
 
 router.get('/', (req, res) => {
     res.json({message:'Hello NodeJs'})
