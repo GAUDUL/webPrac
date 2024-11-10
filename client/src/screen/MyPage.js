@@ -2,7 +2,7 @@ import '../css/MyPage.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { checkLoginStatus } from '../fetch/LoginRegister';
-import { uploadProfile } from '../fetch/UserFetch';
+import { uploadProfile, updateProfile } from '../fetch/UserFetch';
 import MenuBar from '../component/MenuBar';
 
 function MyPage() {
@@ -13,7 +13,8 @@ function MyPage() {
     const verifyLogin = async () => {
       const data = await checkLoginStatus();
       if (data.isLoggedIn) {
-        setUser(prev => ({ ...prev, name: data.userName }));
+        const userProfile = await updateProfile();
+        setUser(prev=>({...prev, name:userProfile.userName, profileImage: userProfile.profileImage}))
       } else {
         navigate('/');
       }
@@ -31,20 +32,20 @@ function MyPage() {
         const formData = new FormData();
         formData.append('profileImage', file);
 
+        //서버 요청
         uploadProfile(formData)
-        .then(response => response.json())
-      .then(data => {
-        if (data.success) {
-          console.log('파일 업로드 성공', data.profileImageUrl);
-          //setUser(prev => ({ ...prev, profileImage: data.profileImageUrl }));
-        } else {
-          console.error('파일 업로드 실패', data.message);
-        }
-      })
-      .catch(error => {
+        .then(data => {
+          if (data.success) {
+           console.log('파일 업로드 성공', data.profileImageUrl);
+            //setUser(prev => ({ ...prev, profileImage: data.profileImageUrl }));
+          } else {
+            console.error('파일 업로드 실패', data.message);
+          }
+        })
+        .catch(error => {
         console.error('서버 오류:', error);
-      });
-    };
+        });
+      };
       reader.readAsDataURL(file);
     }
   };

@@ -5,7 +5,7 @@ const fs = require('fs');
 const router = express.Router();
 const {login, logout, checkLoginStatus } = require('../controllers/user/LoginOut');
 const {register} = require('../controllers/user/Register')
-const { profileUpload } = require('../controllers/user/Profile')
+const { profileUpload, profileUpdate } = require('../controllers/user/Profile')
 
 // multer 설정 (업로드할 디렉토리 지정)
 const storage = multer.diskStorage({
@@ -33,11 +33,13 @@ router.get('/',checkLoginStatus)
 
 router.post('/register', register);
 
-router.post('/login', login)
+router.post('/login', login);
 
 router.get('/logout',logout);
 
 router.post('/uploadProfileImage', upload.single('profileImage'), profileUpload);
+
+router.get('/updateProfile',profileUpdate);
 
 
 module.exports = router

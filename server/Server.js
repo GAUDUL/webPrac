@@ -13,8 +13,7 @@ const {dbConnect}= require('./components/DbConnect');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(cors({
     origin: 'http://localhost:3000', // 클라이언트의 URL
     credentials: true // 쿠키와 같은 자격 증명 허용
