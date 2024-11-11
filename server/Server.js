@@ -32,6 +32,7 @@ app.use(session({
 
 
 const userRouter = require('./routes/userRoutes')
+const wordRouter= require('./routes/wordRoutes')
 
 router.get('/', (req, res) => {
     res.json({message:'Hello NodeJs'})
@@ -39,7 +40,7 @@ router.get('/', (req, res) => {
 
 app.use('/', router);
 app.use('/user', userRouter);
-
+app.use('/word', wordRouter);
 
 
 app.listen(port, () => {

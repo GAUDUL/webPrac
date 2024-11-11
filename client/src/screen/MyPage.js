@@ -8,6 +8,7 @@ import MenuBar from '../component/MenuBar';
 function MyPage() {
   const navigate = useNavigate();
   const [user, setUser] = useState({ name: '', profileImage: null });
+  const [wordList, setWordList] = useState([]);
   
   useEffect(() => {
     const verifyLogin = async () => {
@@ -21,6 +22,10 @@ function MyPage() {
     };
     verifyLogin();
   }, [navigate]);
+
+  const handleWordNote = ()=>{
+    navigate('/word');
+  }
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -37,7 +42,6 @@ function MyPage() {
         .then(data => {
           if (data.success) {
            console.log('파일 업로드 성공', data.profileImageUrl);
-            //setUser(prev => ({ ...prev, profileImage: data.profileImageUrl }));
           } else {
             console.error('파일 업로드 실패', data.message);
           }
@@ -69,7 +73,7 @@ function MyPage() {
           </label>
         </div>
       </div>
-      <button>나만의 단어장</button>
+      <button onClick={handleWordNote} >나만의 단어장</button>
       <button>이전 테스트 결과</button>
       <button>오답노트</button>
     </div>
