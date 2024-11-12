@@ -8,7 +8,6 @@ import MenuBar from '../component/MenuBar';
 function MyPage() {
   const navigate = useNavigate();
   const [user, setUser] = useState({ name: '', profileImage: null });
-  const [wordList, setWordList] = useState([]);
   
   useEffect(() => {
     const verifyLogin = async () => {

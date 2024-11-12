@@ -37,7 +37,6 @@ function MainPage() {
         < MenuBar/>
       </div>
       <h1>어서오세요 {user.name}님!</h1>
-
     </div>
   );
 }

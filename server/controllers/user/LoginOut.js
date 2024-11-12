@@ -6,7 +6,8 @@ const checkLoginStatus = async (req,res)=>{
     if (req.session.user) {
         res.json({ 
             isLoggedIn: true,
-            userName: req.session.user.name});
+            userName: req.session.user.name
+        });
     } else {
         res.json({ isLoggedIn: false });
     }

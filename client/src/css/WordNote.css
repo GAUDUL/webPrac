@@ -33,3 +33,45 @@
     background-color: #3a206d; /* 호버 시 배경색 변경 */
     color:#ffffff
   }
+
+  .wordTable {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.wordTable table {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.wordTable th, .wordTable td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wordTable th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.wordTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .wordBlank {
+        width: 80%;
+    }
+
+    .confirmButton {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .wordTable {
+        width: 100%;
+    }
+}
