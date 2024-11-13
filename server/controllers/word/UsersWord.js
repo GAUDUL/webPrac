@@ -35,8 +35,19 @@ const lookUpWord = async (req,res)=>{
         }
     } catch(err){
         console.log('사용자 단어 조회 오류: ',err);
-        return res.status(500),json({success:false});
+        return res.status(500).json({success:false});
     }
 }
 
-module.exports= {addWord, lookUpWord}
+const deleteWord = async(req,res)=>{
+    try{
+        const {spelling} = req.body;
+        await WordModel.deleteOne({userId:req.session.user.id, spelling: spelling})
+        return res.json({success: true});
+    }catch(err){
+        console.log('단어 삭제 오류: ',err);
+        return res.status(500).json({success:false});
+    }
+}
+
+module.exports= {addWord, lookUpWord, deleteWord}

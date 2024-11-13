@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { addWord, lookUpWord} = require('../controllers/word/UsersWord')
+const { addWord, lookUpWord, deleteWord} = require('../controllers/word/UsersWord')
 
 router.post('/add',addWord);
 
 router.get('/lookUp', lookUpWord);
+
+router.post('/delete', deleteWord);
 
 module.exports = router

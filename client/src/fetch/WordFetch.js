@@ -25,3 +25,16 @@ export const usersWord = async ()=>{
     console.log('단어 조회 오류: ', error);
   }
 }
+
+export const wordDelete = async(word)=>{
+  try{
+    const response = await axios.post(`${process.env.REACT_APP_NODEJS_API_URL}/word/delete`,{
+      spelling: word
+    },{
+      withCredentials: true
+    })
+    return(response.data);
+  }catch(err){
+    console.log('단어 삭제 오류: ',err);
+  }
+}

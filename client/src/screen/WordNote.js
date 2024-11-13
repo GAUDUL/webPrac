@@ -2,7 +2,7 @@ import '../css/WordNote.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { checkLoginStatus } from '../fetch/LoginRegister';
-import { wordConfirm, usersWord} from '../fetch/WordFetch'
+import { wordConfirm, usersWord, wordDelete } from '../fetch/WordFetch'
 import MenuBar from '../component/MenuBar';
 
 function WordNote(){
@@ -39,6 +39,19 @@ function WordNote(){
             }
         }
     }
+
+    const handleDeleteButton = async (word)=>{
+        const deleteWord=await wordDelete(word);
+        if(deleteWord.success){
+            const list=await usersWord();
+            if(list.success){
+                setWordList(list.words);
+            }
+        }
+        else{
+            console.log('단어 삭제 실패');
+        }
+    }
       
     return(
         <div>
@@ -72,6 +85,7 @@ function WordNote(){
                         <tr>
                             <th>Spelling</th>
                             <th>Meaning</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -79,6 +93,7 @@ function WordNote(){
                             <tr key={index}>
                                 <td>{item.spelling}</td>
                                 <td>{item.meaning}</td>
+                                <td><button onClick={() => handleDeleteButton(item.spelling)}>x</button></td>
                             </tr>
                         ))}
                     </tbody>
