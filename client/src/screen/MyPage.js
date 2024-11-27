@@ -5,6 +5,7 @@ import { checkLoginStatus } from '../fetch/LoginRegister';
 import { uploadProfile, updateProfile } from '../fetch/UserFetch';
 import MenuBar from '../component/MenuBar';
 
+//마이페이지
 function MyPage() {
   const navigate = useNavigate();
   const [user, setUser] = useState({ name: '', profileImage: null });
@@ -22,10 +23,12 @@ function MyPage() {
     verifyLogin();
   }, [navigate]);
 
+  //이동
   const handleWordNote = ()=>{
     navigate('/word');
   }
 
+  //이미지 업로드
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
     if (file) {

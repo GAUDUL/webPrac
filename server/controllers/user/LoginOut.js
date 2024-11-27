@@ -1,6 +1,8 @@
 const { comparePassword } = require('../../components/hash');
 const UserModel = require('../../models/User');
 
+
+//로그인 상태 확인
 const checkLoginStatus = async (req,res)=>{
     console.log('세션 상태:', req.session); // 세션 상태 로그
     if (req.session.user) {
@@ -13,6 +15,7 @@ const checkLoginStatus = async (req,res)=>{
     }
 }
 
+//로그인
 const login = async(req,res)=>{
     const { userId, passWord } = req.body;
 
@@ -40,6 +43,7 @@ const login = async(req,res)=>{
     }
 }
 
+//로그아웃
 const logout = async (req,res)=>{
     if (req.session.user) {
         req.session.destroy((err) => {

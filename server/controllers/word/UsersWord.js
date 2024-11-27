@@ -1,5 +1,6 @@
 const WordModel = require('../../models/Word');
 
+//단어 추가
 const addWord = async (req,res)=>{
     const {spelling, meaning} = req.body;
     try {
@@ -24,6 +25,7 @@ const addWord = async (req,res)=>{
     }
 }
 
+//단어 조회
 const lookUpWord = async (req,res)=>{
     try{
         const words = await WordModel.find({userId:req.session.user.id});
@@ -39,6 +41,7 @@ const lookUpWord = async (req,res)=>{
     }
 }
 
+//단어 삭제
 const deleteWord = async(req,res)=>{
     try{
         const {spelling} = req.body;

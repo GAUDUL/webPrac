@@ -24,6 +24,7 @@ function WordNote(){
         verifyLogin();
       }, [navigate, setWordList]);
 
+      //추가 버튼
     const handleConfirmButton = async ()=>{
         if(word.eng && word.mean){ 
             const confirmWord = await wordConfirm(word.eng, word.mean);
@@ -40,6 +41,7 @@ function WordNote(){
         }
     }
 
+    //삭제 버튼
     const handleDeleteButton = async (word)=>{
         const deleteWord=await wordDelete(word);
         if(deleteWord.success){

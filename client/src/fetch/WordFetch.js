@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+//확인
 export const wordConfirm = async (eng, mean)=>{
     try{
         const response = await axios.post(`${process.env.REACT_APP_NODEJS_API_URL}/word/add`,{
@@ -15,6 +16,7 @@ export const wordConfirm = async (eng, mean)=>{
 
 }
 
+//조회
 export const usersWord = async ()=>{
   try{
     const response = await axios.get(`${process.env.REACT_APP_NODEJS_API_URL}/word/lookUp`,{
@@ -26,6 +28,7 @@ export const usersWord = async ()=>{
   }
 }
 
+//삭제
 export const wordDelete = async(word)=>{
   try{
     const response = await axios.post(`${process.env.REACT_APP_NODEJS_API_URL}/word/delete`,{

@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react'
 import { checkLoginStatus, userLogout } from '../fetch/LoginRegister'
 import MenuBar from '../component/MenuBar'
 
-
+//메인 페이지
 function MainPage() {
   const navigate = useNavigate(); // navigate 훅 사용
   const [user,setUser]=useState({name: ''})
@@ -22,6 +22,7 @@ function MainPage() {
     verifyLogin();
   }, [navigate]);
 
+  //로그아웃
   const handleLogout = async () =>{
     userLogout()
     .then((response)=>{

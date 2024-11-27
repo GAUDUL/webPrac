@@ -7,6 +7,7 @@ import WordNote from './screen/WordNote'
 
 function App() {
   return (
+    //라우터 세팅
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />

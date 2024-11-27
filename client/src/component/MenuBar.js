@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { userLogout } from '../fetch/LoginRegister';
 
+//메뉴 상단 바 세팅
 function MenuBar() {
   const navigate = useNavigate();
 
