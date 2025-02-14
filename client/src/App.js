@@ -4,6 +4,7 @@ import MainPage from './screen/MainPage'
 import Register from './screen/Register'
 import MyPage from './screen/MyPage'
 import WordNote from './screen/WordNote'
+import Community from './screen/Community'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/myPage" element={<MyPage/>}/>
         <Route path="/word" element={<WordNote/>}/>
+        <Route path="/community" element={<Community/>}/>
       </Routes>
     </Router>
   );

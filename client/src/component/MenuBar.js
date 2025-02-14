@@ -1,6 +1,6 @@
 import '../css/MenuBar.css';
 import { useNavigate } from 'react-router-dom'; 
-import { useEffect, useState } from 'react';
+//import { useEffect, useState } from 'react';
 import { userLogout } from '../fetch/LoginRegister';
 
 //메뉴 상단 바 세팅
@@ -13,6 +13,9 @@ function MenuBar() {
   const handleMyPage = () => {
     navigate('/myPage');
   };
+  const handleCommunity= () => {
+    navigate('/community')
+  }
   const handleLogout = async () => {
     userLogout().then((response) => {
       if (response.status === 200) {
@@ -25,7 +28,7 @@ function MenuBar() {
     <div className="MenuBar">
       <div className="left-buttons">
         <button className="MainButton" onClick={handleMain}>Myweb</button>
-        <button className="button">hello</button>
+        <button className="button" onClick={handleCommunity}>Community</button>
         <button className="button">hi</button>
       </div>
       <div className="right-buttons">

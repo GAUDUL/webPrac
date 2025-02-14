@@ -23,11 +23,6 @@ function MyPage() {
     verifyLogin();
   }, [navigate]);
 
-  //이동
-  const handleWordNote = ()=>{
-    navigate('/word');
-  }
-
   //이미지 업로드
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -75,9 +70,9 @@ function MyPage() {
           </label>
         </div>
       </div>
-      <button onClick={handleWordNote} >나만의 단어장</button>
       <button>이전 테스트 결과</button>
-      <button>오답노트</button>
+      <button>내가 속한 그룹</button>
+      <button>회원탈퇴</button>
     </div>
   );
 }

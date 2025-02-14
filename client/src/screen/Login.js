@@ -37,6 +37,13 @@ function Login() {
     navigate('/register'); // 메인 페이지로 이동
   }
 
+  // Enter 키를 눌렀을 때 Login 버튼 클릭 처리
+    const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+        handleLogin();
+      }
+  }  
+
   return (
     <div className="Login">
       <h1 className="LoginText">Login</h1>
@@ -47,6 +54,7 @@ function Login() {
           value={user.userId}
           onChange={(e) => setUser(prev=>({...prev, userId: e.target.value }))}
           maxLength={12} // 최대 입력 길이를 12로 설정
+          onKeyDown={handleKeyPress} // Enter 키를 누르면 처리
       />
       </div>
       <div>
@@ -56,6 +64,7 @@ function Login() {
           value={user.passWord}
           onChange={(e) => setUser(prev=>({...prev,passWord: e.target.value }))}
           maxLength={18} // 최대 입력 길이를 18로 설정
+          onKeyDown={handleKeyPress} // Enter 키를 누르면 처리
       />
       </div>
       <button className="LoginButton" onClick={handleLogin}> Login </button>
